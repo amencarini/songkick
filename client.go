@@ -13,13 +13,13 @@ const (
 
 type Client struct {
 	apikey string
-	http   *http.Client
+	Http   *http.Client
 }
 
 func NewClient(key string) Client {
 	return Client{
 		apikey: key,
-		http:   &http.Client{},
+		Http:   &http.Client{},
 	}
 }
 
@@ -34,7 +34,7 @@ func (c *Client) clientParams(values map[string]string) string {
 
 func (c *Client) get(resource string, params map[string]string) (*http.Response, error) {
 	url := baseURL + resource + "?" + c.clientParams(params)
-	resp, err := c.http.Get(url)
+	resp, err := c.Http.Get(url)
 	if err != nil {
 		return nil, err
 	}
